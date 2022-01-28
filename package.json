@@ -1,6 +1,6 @@
 {
   "name": "rn-env-cmd",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Customize env-cmd for react native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,7 +8,7 @@
     "node": ">=8.0.0"
   },
   "bin": {
-    "env-cmd": "bin/env-cmd.js"
+    "rn-env-cmd": "bin/rn-env-cmd.js"
   },
   "scripts": {
     "test": "mocha -r ts-node/register ./test/**/*.ts",
