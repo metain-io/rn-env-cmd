@@ -1,0 +1,16 @@
+# nyc test coverage cache directory
+.nyc_output
+
+# Coverage output directory used by nyc
+coverage
+
+# Dependency directory
+node_modules
+package-lock.json
+
+# Code Editor directory
+.vscode
+.idea
+
+# Ignore compiled dist/tests
+dist/test
