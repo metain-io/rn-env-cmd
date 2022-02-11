@@ -1,6 +1,6 @@
 {
   "name": "rn-env-cmd",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Customize env-cmd for react native",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
