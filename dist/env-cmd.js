@@ -66,10 +66,10 @@ async function EnvCmd({ command, commandArgs, envFile, rc, options = {} }) {
     // Execute the command with the given environment variables
     const proc = child_process_1.spawn(command, commandArgs);
     proc.stdout.on('data', (data) => {
-        console.log(`########## Data out: ${data}`);
+        console.log(`${data}`);
     });
     proc.stderr.on('data', (data) => {
-        console.error(`########## Error: ${data}`);
+        console.error(`${data}`);
     });
     proc.on('close', (code) => {
         console.log(`########## Child process exited with code ${code}`);

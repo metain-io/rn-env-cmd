@@ -76,10 +76,10 @@ export async function EnvCmd (
   // Execute the command with the given environment variables
   const proc = spawn(command, commandArgs)
   proc.stdout.on('data', (data) => {
-    console.log(`########## Data out: ${data}`);
+    console.log(`${data}`);
   });
   proc.stderr.on('data', (data) => {
-      console.error(`########## Error: ${data}`);
+      console.error(`${data}`);
   });
 
   proc.on('close', (code) => {
