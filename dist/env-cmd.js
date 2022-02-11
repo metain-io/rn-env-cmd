@@ -54,16 +54,27 @@ async function EnvCmd({ command, commandArgs, envFile, rc, options = {} }) {
             // console.log('err: ', err);
         }
     };
+    // Create directory "./<Current Working Directory>/node_modules/@rn-env"
     // CAUTION: https://stackoverflow.com/questions/10265798/determine-project-root-from-a-running-node-js-application
     let currentWorkingDirectory = process.cwd();
     let envDir = [currentWorkingDirectory, 'node_modules'].join('/');
     await createFolder(envDir);
     envDir = [envDir, '@rn-env'].join('/');
     await createFolder(envDir);
+    // Create and write env file "./<Current Working Directory>/node_modules/@rn-env/index.js"
     await fs_1.writeFileSync(`${envDir}/index.js`, `module.exports=${JSON.stringify(env)}`);
-    // END CHANGED
     // Execute the command with the given environment variables
     const proc = child_process_1.spawn(command, commandArgs);
+    proc.stdout.on('data', (data) => {
+        console.log(`########## Data out: ${data}`);
+    });
+    proc.stderr.on('data', (data) => {
+        console.error(`########## Error: ${data}`);
+    });
+    proc.on('close', (code) => {
+        console.log(`########## Child process exited with code ${code}`);
+    });
+    // END CHANGED
     // Handle any termination signals for parent and child proceses
     const signals = new signal_termination_1.TermSignals({ verbose: options.verbose });
     signals.handleUncaughtExceptions();
